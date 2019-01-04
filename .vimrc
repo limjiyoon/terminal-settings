@@ -72,7 +72,12 @@ endif
 :nnoremap <A-j> <C-w>j
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
-
+" }}}
+" Cursor {{{
+	nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+	nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+	nnoremap gj j
+	nnoremap gk k
 " }}}
 "}}}
 " Plugin Manger {{{
@@ -106,16 +111,30 @@ Plug 'vim-scripts/mru.vim'
 call plug#end()
 " }}}
 "Plugin Settings {{{
-" - vim-easy-align
+" - vim-easy-align {{{
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
-
-" - vim-airline
+" }}}
+" - vim-airline {{{
 let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
 let g:airline_theme='hybrid'
 set laststatus=2 " turn on bottom bar
+" }}}
+" - multi_cursor {{{
+" let g:multi_cursor_use_default_mapping=0
+" 
+"  Default mapping
+" let g:multi_cursor_start_word_key      = '<C-n>'
+" let g:multi_cursor_select_all_word_key = '<A-n>'
+" let g:multi_cursor_start_key           = 'g<C-n>'
+" let g:multi_cursor_select_all_key      = 'g<A-n>'
+" let g:multi_cursor_next_key            = '<C-n>'
+" let g:multi_cursor_prev_key            = '<C-p>'
+" let g:multi_cursor_skip_key            = '<C-x>'
+" }}}
+" - github-dashboard.git {{{
+ let g:multi_cursor_quit_key            = '<Esc>'
 
-" - github-dashboard.git
 let g:github_dashboard = { 'username': 'limjiyoon', 'password': 'secret' }
 " dashboard window position
 " - options: tab, top, bottom, above, below, left, right
@@ -137,22 +156,23 @@ let g:github_dashboard['emoji'] = 0
 " Command to open link URLs
 " - Default: auto-detect
 let g:github_dashboard['open_command'] = 'open'
-
-" - nerdTree
+" }}}
+" - nerdTree {{{
 map <Leader>nt <ESC>:NERDTreeToggle<CR>
-
-" - Tagbar
+" }}}
+" - Tagbar {{{
 map <Leader>tb <ESC>:TagbarToggle<CR>
-
-" RipGrep integration
+" }}}
+" - RipGrep integration {{{
 "http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
 if executable("rg")
   let g:ackprg = 'rg --vimgrep --no-heading -i'
 endif
-
-" MRU
+" }}}
+" - MRU {{{
 let MRU_FILE = '~/.vim/.mru_files_db'
 let MRU_Max_Entries = 10
 let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'
 let MRU_Window_Height = 10
+" }}}
 " }}}
