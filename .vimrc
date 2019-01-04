@@ -33,9 +33,10 @@ set autoindent
 set expandtab smarttab
 set tabstop=4 softtabstop=4 shiftwidth=4
 set foldmethod=marker   
-set foldnestmax=99
+set foldnestmax=10
 set foldenable
 set foldlevel=0
+set so=10 " scroll off
 filetype plugin indent on
 syntax on
 
@@ -48,10 +49,10 @@ set norelativenumber
 set synmaxcol=400 "set enough(but not too long) column length.
 syn sync minlines=50 maxlines=50
 
-
 color jellybeans
 " }}}
 
+" Mapping {{{
 " Movement {{{
 
 " Split Window
@@ -60,7 +61,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" From terminal bufer
+" Terminal 
 if has('nvim')
     :tnoremap <A-h> <C-\><C-n><C-w>h
     :tnoremap <A-j> <C-\><C-n><C-w>j
@@ -72,13 +73,8 @@ endif
 :nnoremap <A-k> <C-w>k
 :nnoremap <A-l> <C-w>l
 
-" Cursor
-nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
-nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-nnoremap gj j
-nnoremap gk k
 " }}}
-
+"}}}
 " Plugin Manger {{{
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
@@ -105,6 +101,8 @@ Plug '/usr/local/opt/fzf'
 Plug 'chun-yang/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'jremmen/vim-ripgrep'
+Plug 'vim-scripts/mru.vim'
 call plug#end()
 " }}}
 "Plugin Settings {{{
@@ -145,4 +143,16 @@ map <Leader>nt <ESC>:NERDTreeToggle<CR>
 
 " - Tagbar
 map <Leader>tb <ESC>:TagbarToggle<CR>
+
+" RipGrep integration
+"http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
+if executable("rg")
+  let g:ackprg = 'rg --vimgrep --no-heading -i'
+endif
+
+" MRU
+let MRU_FILE = '~/.vim/.mru_files_db'
+let MRU_Max_Entries = 10
+let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'
+let MRU_Window_Height = 10
 " }}}
