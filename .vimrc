@@ -176,3 +176,27 @@ let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'
 let MRU_Window_Height = 10
 " }}}
 " }}}
+" "VimEnter configurations {{{ 
+"NOTE: Order is important in this block.
+
+augroup MRUOpen
+  autocmd!
+  autocmd VimEnter * MRU
+augroup END
+
+augroup NERDTreeOpen
+  autocmd!
+  "NERDTree
+  autocmd VimEnter * NERDTree
+  "To focus edit pane after NERDTree open
+  autocmd VimEnter * wincmd l
+augroup END
+
+"Make a new 'tagbar' & back to the main pane
+augroup TagbarOpen
+  au!
+  autocmd VimEnter * Tagbar
+  autocmd VimEnter * :wincmd h
+augroup END
+
+"END VimEnter configuration }}} 
