@@ -63,15 +63,12 @@ nnoremap <C-l> <C-w>l
 
 " Terminal 
 if has('nvim')
-    :tnoremap <A-h> <C-\><C-n><C-w>h
-    :tnoremap <A-j> <C-\><C-n><C-w>j
-    :tnoremap <A-k> <C-\><C-n><C-w>k
-    :tnoremap <A-l> <C-\><C-n><C-w>l
+    :tnoremap <C-h> <C-\><C-n><C-w>h
+    :tnoremap <C-j> <C-\><C-n><C-w>j
+    :tnoremap <C-k> <C-\><C-n><C-w>k
+    :tnoremap <C-l> <C-\><C-n><C-w>l
+    :tnoremap <ESC> <C-\><C-n>
 endif
-:nnoremap <A-h> <C-w>h
-:nnoremap <A-j> <C-w>j
-:nnoremap <A-k> <C-w>k
-:nnoremap <A-l> <C-w>l
 " }}}
 " Cursor {{{
 	nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
@@ -79,15 +76,19 @@ endif
 	nnoremap gj j
 	nnoremap gk k
 " }}}
+" Edit vim/zsh file{{{
+nmap <silent> <Leader>ev :e $MYVIMRC<CR>
+nmap <silent> <Leader>ez :e ~/.zshrc<CR>
+nmap <silent> <Leader>sv :source $MYVIMRC<CR>
+" }}}
 "}}}
 " Plugin Manger {{{
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin('~/.vim/plugged')
-"
+" Default {{{
 " information of class, function and variable
 Plug 'tpope/vim-fugitive'
-
 " Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 Plug 'junegunn/vim-easy-align'
 " Vim prettier status line
@@ -96,7 +97,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Konfekt/FastFold'
 " Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
+" Plug 'junegunn/vim-github-dashboard'
 " Multiple Cursor
 Plug 'terryma/vim-multiple-cursors'
 " On-demand loading
@@ -108,6 +109,8 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'jremmen/vim-ripgrep'
 Plug 'vim-scripts/mru.vim'
+Plug 'yggdroot/indentline'
+" }}}
 call plug#end()
 " }}}
 "Plugin Settings {{{
@@ -175,28 +178,35 @@ let MRU_Max_Entries = 10
 let MRU_Exclude_Files = '^/tmp/.*\|^/var/tmp/.*'
 let MRU_Window_Height = 10
 " }}}
+" - indentline {{{
+
+" }}}
+" - Commentary {{{
+nnoremap <C-_> :Commentary<CR>
+vnoremap <C-_> :Commentary<CR>
+"   }}}
 " }}}
 " "VimEnter configurations {{{ 
 "NOTE: Order is important in this block.
 
-augroup MRUOpen
-  autocmd!
-  autocmd VimEnter * MRU
-augroup END
+"augroup MRUOpen
+"  autocmd!
+"  autocmd VimEnter * MRU
+"augroup END
 
-augroup NERDTreeOpen
-  autocmd!
-  "NERDTree
-  autocmd VimEnter * NERDTree
-  "To focus edit pane after NERDTree open
-  autocmd VimEnter * wincmd l
-augroup END
+"augroup NERDTreeOpen
+"  autocmd!
+"  "NERDTree
+"  autocmd VimEnter * NERDTree
+"  "To focus edit pane after NERDTree open
+"  autocmd VimEnter * wincmd l
+"augroup END
 
-"Make a new 'tagbar' & back to the main pane
-augroup TagbarOpen
-  au!
-  autocmd VimEnter * Tagbar
-  autocmd VimEnter * :wincmd h
-augroup END
+""Make a new 'tagbar' & back to the main pane
+"augroup TagbarOpen
+"  au!
+"  autocmd VimEnter * Tagbar
+"  autocmd VimEnter * :wincmd h
+"augroup END
 
 "END VimEnter configuration }}} 
