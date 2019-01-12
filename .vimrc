@@ -63,7 +63,7 @@ color jellybeans
 " }}}
 
 " Mapping {{{
-" Movement {{{
+" Window Movement {{{
 
 " Split Window
 nnoremap <C-h> <C-w>h
@@ -93,6 +93,17 @@ nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>ez :e ~/.zshrc<CR>
 nmap <silent> <Leader>sv :source $MYVIMRC<CR>
 " }}}
+" toggle relative number
+function! NumberToggle()
+  if(&rnu == 1)
+    set nornu
+  else
+    set rnu
+  endif
+endfunc
+
+nnoremap <C-l> :call NumberToggle()<cr>
+
 " execute Program with input file using python {{{
 nnoremap <Leader>r :!python % < input<CR>
 " }}}
@@ -221,13 +232,6 @@ nnoremap <Leader>lm <ESC>:LengthmattersToggle<CR>
 " - Deoplete {{{
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#enable_typeinfo = 0
-" " Clang
-" " Change clang binary path
-" call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
-
-" " Change clang options
-" call deoplete#custom#var('clangx', 'default_c_options', '')
-" call deoplete#custom#var('clangx', 'default_cpp_options', '')
 " }}}
 " }}}
 " VimEnter configurations {{{
