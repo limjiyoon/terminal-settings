@@ -48,9 +48,6 @@ silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
 set undodir=~/.config/nvim/backups
 set undofile
 
-
-
-
 filetype plugin indent on
 syntax on
 
@@ -64,7 +61,7 @@ set synmaxcol=400 "set enough(but not too long) column length.
 set clipboard=unnamedplus "yank, paste to system clipboard
 syn sync minlines=50 maxlines=50
 
-color jellybeans
+colorscheme OceanicNext
 " }}}
 
 " Mapping {{{
@@ -143,6 +140,7 @@ Plug 'vim-scripts/mru.vim'
 Plug 'yggdroot/indentline'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'mhinz/vim-startify' "fancy start page for empty vim
+Plug 'ryanoasis/vim-devicons' " Adds filetype glyphs (icons) to various vim plugins.
 " AutoComplete
 Plug 'w0rp/ale' " Lint
 Plug 'Shougo/deoplete.nvim'
@@ -166,7 +164,8 @@ xmap ga <Plug>(EasyAlign)
 " }}}
 " - vim-airline {{{
 let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
-let g:airline_theme='hybrid'
+" let g:airline_theme='hybrid'
+let g:airline_theme='oceanicnext'
 set laststatus=2 " turn on bottom bar
 " }}}
 " - multi_cursor {{{
@@ -245,12 +244,23 @@ nmap <silent> <C-j> <Plug>(ale_next_wrap)
 
 let g:ale_lint_on_text_changed = 'never' " run linter when save file
 let g:ale_lint_on_enter = 0 " don't run linter on opening a file"
-"   }}}
+let g:ale_sign_error = '✖' "Lint error sign
+let g:ale_sign_warning = '⚠' "Lint warning sign
+let g:ale_linters = {'javascript': ['eslint']} "Lint js with eslint
+" let g:ale_fixers = {'javascript': ['prettier', 'eslint']} "Fix eslint errors
 
+"   }}}
 " - Deoplete {{{
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#enable_typeinfo = 0
 " }}}
+" - Theme : onedark
+" let g:onedark_color_overrides = {
+" \ "black": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },
+" \ "purple": { "gui": "#C678DF", "cterm": "170", "cterm16": "5" }
+" \}
+" colorscheme onedark
+
 " }}}
 " VimEnter configurations {{{
 "NOTE: Order is important in this block.
