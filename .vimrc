@@ -61,7 +61,7 @@ set synmaxcol=400 "set enough(but not too long) column length.
 set clipboard=unnamedplus "yank, paste to system clipboard
 syn sync minlines=50 maxlines=50
 
-colorscheme OceanicNext
+" colorscheme OceanicNext
 " }}}
 
 " Mapping {{{
@@ -141,6 +141,7 @@ Plug 'yggdroot/indentline'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'mhinz/vim-startify' "fancy start page for empty vim
 Plug 'ryanoasis/vim-devicons' " Adds filetype glyphs (icons) to various vim plugins.
+Plug 'joshdick/onedark.vim'
 " AutoComplete
 Plug 'w0rp/ale' " Lint
 Plug 'Shougo/deoplete.nvim'
@@ -165,7 +166,7 @@ xmap ga <Plug>(EasyAlign)
 " - vim-airline {{{
 let g:airline#extensions#tabline#enabled = 1 " turn on buffer list
 " let g:airline_theme='hybrid'
-let g:airline_theme='oceanicnext'
+let g:airline_theme='onedark'
 set laststatus=2 " turn on bottom bar
 " }}}
 " - multi_cursor {{{
@@ -255,11 +256,11 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#enable_typeinfo = 0
 " }}}
 " - Theme : onedark
-" let g:onedark_color_overrides = {
-" \ "black": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },
-" \ "purple": { "gui": "#C678DF", "cterm": "170", "cterm16": "5" }
-" \}
-" colorscheme onedark
+let g:onedark_color_overrides = {
+\ "black": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },
+\ "purple": { "gui": "#c594c5", "cterm": "176", "cterm16": "5" }
+\}
+colorscheme onedark
 
 " }}}
 " VimEnter configurations {{{
