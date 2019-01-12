@@ -40,23 +40,11 @@ set foldnestmax=10
 set foldenable
 set foldlevel=0
 set so=10 " scroll off
-"================================= Tap & Space ======================================
-" nmap <leader>l <Esc>:set list!<CR>
-" highlight SpecialKey cterm=None ctermfg=grey
-" map <leader>2 <Esc>:retab<CR>:set ts=4<CR>:set noexpandtab<CR>:retab!<CR>:set expandtab<CR>:set ts=2<CR>:set sw=2<CR>:retab!<CR>
-" map <leader>4 <Esc>:retab<CR>:set ts=2<CR>:set noexpandtab<CR>:retab!<CR>:set expandtab<CR>:set ts=4<CR>:set sw=4<CR>:retab!<CR>
-" set listchars=tab:>·
-" set listchars+=trail:·
-" set listchars+=extends:»
-" set listchars+=precedes:«
-" set listchars+=nbsp:·
-" set listchars+=space:·
-" " set listchars=tab:>·
-" " set listchars+=extends:»
-" " set listchars+=precedes:«
-" set fillchars+=vert:\│ "Make vertical split separator full line
-" remove the traillings on save
+"======== Tap & Space ======== "
 autocmd BufWritePre * %s/\s\+$//e
+
+
+
 
 filetype plugin indent on
 syntax on
@@ -139,14 +127,15 @@ Plug 'vim-scripts/mru.vim'
 Plug 'yggdroot/indentline'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'mhinz/vim-startify' "fancy start page for empty vim
+" Plug 'neomake/neomake'
 " AutoComplete
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
-else
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'roxma/nvim-yarp'
-    Plug 'roxma/vim-hug-neovim-rpc'
-endif
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-zsh'
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/deoplete-clangx'
+Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
+Plug 'carlitux/deoplete-ternjs'
 
 " }}}
 " JavaScript {{{
@@ -230,7 +219,8 @@ vnoremap <C-_> :Commentary<CR>
 nnoremap <Leader>lm <ESC>:LengthmattersToggle<CR>
 " }}}
 " - Deoplete {{{
-" let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#jedi#enable_typeinfo = 0
 " " Clang
 " " Change clang binary path
 " call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
