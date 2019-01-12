@@ -22,8 +22,11 @@ set breakindent
 set nu
 set ts=4
 set hlsearch
+" ======== Turn Of Swap ====== "
 set nobackup
 set noswapfile
+set nowb
+" =========== Display ======== "
 set ruler
 set bg=dark
 set t_Co=256
@@ -47,6 +50,7 @@ set nocursorline
 set ttyfast
 set norelativenumber
 set synmaxcol=400 "set enough(but not too long) column length.
+set clipboard=unnamed "yank, paste to system clipboard
 syn sync minlines=50 maxlines=50
 
 color jellybeans
@@ -75,11 +79,16 @@ endif
 	nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
 	nnoremap gj j
 	nnoremap gk k
+    map B ^
+    map W $
 " }}}
 " Edit vim/zsh file{{{
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>ez :e ~/.zshrc<CR>
 nmap <silent> <Leader>sv :source $MYVIMRC<CR>
+" }}}
+" execute Program with input file using python {{{
+nnoremap <Leader>r :!python % < input<CR>
 " }}}
 "}}}
 " Plugin Manger {{{
@@ -110,6 +119,20 @@ Plug 'tpope/vim-commentary'
 Plug 'jremmen/vim-ripgrep'
 Plug 'vim-scripts/mru.vim'
 Plug 'yggdroot/indentline'
+Plug 'whatyouhide/vim-lengthmatters'
+Plug 'mhinz/vim-startify' "fancy start page for empty vim
+" AutoComplete
+if has('nvim')
+    Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
+else
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'roxma/nvim-yarp'
+    Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
+" }}}
+" JavaScript {{{
+
 " }}}
 call plug#end()
 " }}}
@@ -161,10 +184,10 @@ let g:github_dashboard['emoji'] = 0
 let g:github_dashboard['open_command'] = 'open'
 " }}}
 " - nerdTree {{{
-map <Leader>nt <ESC>:NERDTreeToggle<CR>
+nnoremap <Leader>nt <ESC>:NERDTreeToggle<CR>
 " }}}
 " - Tagbar {{{
-map <Leader>tb <ESC>:TagbarToggle<CR>
+nnoremap <Leader>tb <ESC>:TagbarToggle<CR>
 " }}}
 " - RipGrep integration {{{
 "http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
@@ -185,8 +208,21 @@ let MRU_Window_Height = 10
 nnoremap <C-_> :Commentary<CR>
 vnoremap <C-_> :Commentary<CR>
 "   }}}
+" - LengthMatters {{{
+nnoremap <Leader>lm <ESC>:LengthmattersToggle<CR>
+"   }}}
+" - Deoplete {{{
+" let g:deoplete#enable_at_startup = 1
+" " Clang
+" " Change clang binary path
+" call deoplete#custom#var('clangx', 'clang_binary', '/usr/bin/clang')
+
+" " Change clang options
+" call deoplete#custom#var('clangx', 'default_c_options', '')
+" call deoplete#custom#var('clangx', 'default_cpp_options', '')
+"   }}}
 " }}}
-" "VimEnter configurations {{{ 
+" VimEnter configurations {{{ 
 "NOTE: Order is important in this block.
 
 "augroup MRUOpen
