@@ -40,8 +40,13 @@ set foldnestmax=10
 set foldenable
 set foldlevel=0
 set so=10 " scroll off
-"======== Tap & Space ======== "
+" ======= Tap & Space ======== "
 autocmd BufWritePre * %s/\s\+$//e
+
+" ===== Persistent Undo ====== "
+silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
+set undodir=~/.config/nvim/backups
+set undofile
 
 
 
@@ -227,6 +232,7 @@ nnoremap <C-_> :Commentary<CR>
 vnoremap <C-_> :Commentary<CR>
 " }}}
 " - LengthMatters {{{
+let g:lengthmatters_on_by_default = 0 " no highlighting will be done when opening a new window
 nnoremap <Leader>lm <ESC>:LengthmattersToggle<CR>
 " }}}
 " - Ale {{{
