@@ -35,11 +35,29 @@ set splitbelow
 set autoindent
 set expandtab smarttab
 set tabstop=4 softtabstop=4 shiftwidth=4
-set foldmethod=marker   
+set foldmethod=marker
 set foldnestmax=10
 set foldenable
 set foldlevel=0
 set so=10 " scroll off
+"================================= Tap & Space ======================================
+" nmap <leader>l <Esc>:set list!<CR>
+" highlight SpecialKey cterm=None ctermfg=grey
+" map <leader>2 <Esc>:retab<CR>:set ts=4<CR>:set noexpandtab<CR>:retab!<CR>:set expandtab<CR>:set ts=2<CR>:set sw=2<CR>:retab!<CR>
+" map <leader>4 <Esc>:retab<CR>:set ts=2<CR>:set noexpandtab<CR>:retab!<CR>:set expandtab<CR>:set ts=4<CR>:set sw=4<CR>:retab!<CR>
+" set listchars=tab:>·
+" set listchars+=trail:·
+" set listchars+=extends:»
+" set listchars+=precedes:«
+" set listchars+=nbsp:·
+" set listchars+=space:·
+" " set listchars=tab:>·
+" " set listchars+=extends:»
+" " set listchars+=precedes:«
+" set fillchars+=vert:\│ "Make vertical split separator full line
+" remove the traillings on save
+autocmd BufWritePre * %s/\s\+$//e
+
 filetype plugin indent on
 syntax on
 
@@ -50,7 +68,7 @@ set nocursorline
 set ttyfast
 set norelativenumber
 set synmaxcol=400 "set enough(but not too long) column length.
-set clipboard=unnamed "yank, paste to system clipboard
+set clipboard=unnamedplus "yank, paste to system clipboard
 syn sync minlines=50 maxlines=50
 
 color jellybeans
@@ -65,7 +83,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-" Terminal 
+" Terminal
 if has('nvim')
     :tnoremap <C-h> <C-\><C-n><C-w>h
     :tnoremap <C-j> <C-\><C-n><C-w>j
@@ -75,10 +93,10 @@ if has('nvim')
 endif
 " }}}
 " Cursor {{{
-	nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
-	nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
-	nnoremap gj j
-	nnoremap gk k
+    nnoremap <expr> k (v:count == 0 ? 'gk' : 'k')
+    nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
+    nnoremap gj j
+    nnoremap gk k
     map B ^
     map W $
 " }}}
@@ -148,7 +166,7 @@ set laststatus=2 " turn on bottom bar
 " }}}
 " - multi_cursor {{{
 " let g:multi_cursor_use_default_mapping=0
-" 
+"
 "  Default mapping
 " let g:multi_cursor_start_word_key      = '<C-n>'
 " let g:multi_cursor_select_all_word_key = '<A-n>'
@@ -173,10 +191,10 @@ let g:github_dashboard['emoji'] = 0
 
 " Customize emoji (see http://www.emoji-cheat-sheet.com/)
 " let g:github_dashboard['emoji_map'] = {
-" \   'user_dashboard': 'blush',
-" \   'user_activity':  'smile',
-" \   'repo_activity':  'laughing',
-" \   'ForkEvent':      'fork_and_knife'
+" \     'user_dashboard': 'blush',
+" \     'user_activity':    'smile',
+" \     'repo_activity':    'laughing',
+" \     'ForkEvent':        'fork_and_knife'
 " \ }
 
 " Command to open link URLs
@@ -192,7 +210,7 @@ nnoremap <Leader>tb <ESC>:TagbarToggle<CR>
 " - RipGrep integration {{{
 "http://www.wezm.net/technical/2016/09/ripgrep-with-vim/
 if executable("rg")
-  let g:ackprg = 'rg --vimgrep --no-heading -i'
+    let g:ackprg = 'rg --vimgrep --no-heading -i'
 endif
 " }}}
 " - MRU {{{
@@ -207,10 +225,10 @@ let MRU_Window_Height = 10
 " - Commentary {{{
 nnoremap <C-_> :Commentary<CR>
 vnoremap <C-_> :Commentary<CR>
-"   }}}
+" }}}
 " - LengthMatters {{{
 nnoremap <Leader>lm <ESC>:LengthmattersToggle<CR>
-"   }}}
+" }}}
 " - Deoplete {{{
 " let g:deoplete#enable_at_startup = 1
 " " Clang
@@ -220,9 +238,9 @@ nnoremap <Leader>lm <ESC>:LengthmattersToggle<CR>
 " " Change clang options
 " call deoplete#custom#var('clangx', 'default_c_options', '')
 " call deoplete#custom#var('clangx', 'default_cpp_options', '')
-"   }}}
 " }}}
-" VimEnter configurations {{{ 
+" }}}
+" VimEnter configurations {{{
 "NOTE: Order is important in this block.
 
 "augroup MRUOpen
@@ -245,4 +263,4 @@ nnoremap <Leader>lm <ESC>:LengthmattersToggle<CR>
 "  autocmd VimEnter * :wincmd h
 "augroup END
 
-"END VimEnter configuration }}} 
+"END VimEnter configuration }}}
