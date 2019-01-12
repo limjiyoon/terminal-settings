@@ -102,7 +102,7 @@ function! NumberToggle()
   endif
 endfunc
 
-nnoremap <C-l> :call NumberToggle()<cr>
+" nnoremap <C-l> :call NumberToggle()<cr>
 
 " execute Program with input file using python {{{
 nnoremap <Leader>r :!python % < input<CR>
@@ -138,8 +138,8 @@ Plug 'vim-scripts/mru.vim'
 Plug 'yggdroot/indentline'
 Plug 'whatyouhide/vim-lengthmatters'
 Plug 'mhinz/vim-startify' "fancy start page for empty vim
-" Plug 'neomake/neomake'
 " AutoComplete
+Plug 'w0rp/ale' " Lint
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-zsh'
 Plug 'Shougo/neco-vim'
@@ -229,6 +229,18 @@ vnoremap <C-_> :Commentary<CR>
 " - LengthMatters {{{
 nnoremap <Leader>lm <ESC>:LengthmattersToggle<CR>
 " }}}
+" - Ale {{{
+nmap <leader>a <ESC>:ALEToggle<CR>
+let g:airline#extensions#ale#enabled = 1 " Show warning in airlines
+
+" Navigate error quickly
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+let g:ale_lint_on_text_changed = 'never' " run linter when save file
+let g:ale_lint_on_enter = 0 " don't run linter on opening a file"
+"   }}}
+
 " - Deoplete {{{
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#jedi#enable_typeinfo = 0
