@@ -40,6 +40,8 @@ set foldnestmax=10
 set foldenable
 set foldlevel=0
 set so=10 " scroll off
+
+" Sets the line numbering to red background:
 " ======= Tap & Space ======== "
 autocmd BufWritePre * %s/\s\+$//e
 
@@ -54,6 +56,7 @@ syntax on
 "Speed up Syntax Highlighting
 set nocursorcolumn
 set nocursorline
+"
 "set lazyredraw "It makes no effect(or more slow?!) from personal experience
 set ttyfast
 set norelativenumber
@@ -87,15 +90,15 @@ endif
     nnoremap <expr> j (v:count == 0 ? 'gj' : 'j')
     nnoremap gj j
     nnoremap gk k
-    map B ^
-    map W $
+    " map B ^
+    " map W $
 " }}}
 " Edit vim/zsh file{{{
 nmap <silent> <Leader>ev :e $MYVIMRC<CR>
 nmap <silent> <Leader>ez :e ~/.zshrc<CR>
 nmap <silent> <Leader>sv :source $MYVIMRC<CR>
 " }}}
-" toggle relative number
+" toggle relative number {{{
 function! NumberToggle()
   if(&rnu == 1)
     set nornu
@@ -103,11 +106,13 @@ function! NumberToggle()
     set rnu
   endif
 endfunc
+"}}}
 
 " nnoremap <C-l> :call NumberToggle()<cr>
 
 " execute Program with input file using python {{{
-nnoremap <Leader>r :!python % < input<CR>
+nnoremap <Leader>pr :!python %<CR>
+nnoremap <Leader>pi :!python % < input<CR>
 " }}}
 "}}}
 " Plugin Manger {{{
@@ -125,7 +130,7 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'Konfekt/FastFold'
 " Any valid git URL is allowed
-" Plug 'junegunn/vim-github-dashboard'
+Plug 'junegunn/vim-github-dashboard'
 " Multiple Cursor
 Plug 'terryma/vim-multiple-cursors'
 " On-demand loading
@@ -135,6 +140,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'chun-yang/auto-pairs'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'jremmen/vim-ripgrep'
 Plug 'vim-scripts/mru.vim'
 Plug 'yggdroot/indentline'
@@ -142,12 +148,16 @@ Plug 'whatyouhide/vim-lengthmatters'
 Plug 'mhinz/vim-startify' "fancy start page for empty vim
 Plug 'ryanoasis/vim-devicons' " Adds filetype glyphs (icons) to various vim plugins.
 Plug 'joshdick/onedark.vim'
+
+" for CSV
+Plug 'mechatroner/rainbow_csv'
 " AutoComplete
 Plug 'w0rp/ale' " Lint
+" Plug 'neomake/neomake' " Async Make
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-zsh'
 Plug 'Shougo/neco-vim'
-Plug 'Shougo/deoplete-clangx'
+Plug 'zchee/deoplete-clang'
 Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
 Plug 'carlitux/deoplete-ternjs'
@@ -231,6 +241,9 @@ let MRU_Window_Height = 10
 nnoremap <C-_> :Commentary<CR>
 vnoremap <C-_> :Commentary<CR>
 " }}}
+" - repeat {{{
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
+"   }}}
 " - LengthMatters {{{
 let g:lengthmatters_on_by_default = 0 " no highlighting will be done when opening a new window
 nnoremap <Leader>lm <ESC>:LengthmattersToggle<CR>
@@ -253,14 +266,26 @@ let g:ale_linters = {'javascript': ['eslint']} "Lint js with eslint
 "   }}}
 " - Deoplete {{{
 let g:deoplete#enable_at_startup = 1
+" Python
+let g:jedi#completions_enabled = 0
+" let g:jedi#completins_command = "<C-n>"
+" let g:jedi#popup_on_dot = 0
 let g:deoplete#sources#jedi#enable_typeinfo = 0
+" let g:deoplete#sources#jedi#popup_on_dot = 0
+" Clang
+let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/7.0.0_1/lib/libclang.dylib'
+let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/7.0.0_1/lib/clang'
+let g:deoplete#sources#clang#std = { "c": "c99", "c++": "c++11" }
+
+
 " }}}
-" - Theme : onedark
+" - Theme : onedark {{{
 let g:onedark_color_overrides = {
 \ "black": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },
 \ "purple": { "gui": "#c594c5", "cterm": "176", "cterm16": "5" }
 \}
 colorscheme onedark
+" }}}
 
 " }}}
 " VimEnter configurations {{{
