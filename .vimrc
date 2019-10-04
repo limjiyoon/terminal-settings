@@ -161,10 +161,9 @@ Plug 'zchee/deoplete-clang'
 Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
 Plug 'carlitux/deoplete-ternjs'
-
 " }}}
-" JavaScript {{{
-
+" P4 {{{
+Plug 'milad14000/vim_p4'
 " }}}
 call plug#end()
 " }}}
