@@ -7,9 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="kennethreitz"
-#ZSH_THEME="refined"
+ZSH_THEME="geometry/geometry"
 # autoload -U promptinit; promptinit
 # prompt purer
 
@@ -25,8 +23,6 @@ plugins=(
     git
     zsh-syntax-highlighting
     zsh-autosuggestions
-    autojump
-    tmuxinator
 )
 
 # }}}
@@ -57,26 +53,8 @@ source $ZSH/oh-my-zsh.sh
 alias vi='nvim'
 alias vim='nvim'
 alias py='python'
-alias bash='chsh -s /bin/bash'
-alias zshconfig='vim ~/.zshrc'
-alias adaptzsh='source ~/.zshrc'
-alias ohmyzsh='vim ~/.ohmyzsh'
-alias vimconfig='vi ~/.vimrc'
-alias coding='cd ~/Desktop/Jiyoon/coding/'
-alias til='/Users/jiyun/Desktop/Jiyoon/TIL'
 alias gcc='gcc -W -Wall -O2'
-alias boostoff='nohup sudo /Applications/Turbo\ Boost\ Switcher.app/Contents/McOS/Turbo\ Switcher &'
 alias ssh='ssh -c aes128-ctr'
-alias notebook='jupyter notebook'
-alias mux='tmuxinator'
+alias j='fasd_cd -d'     # cd, same functionality as j in autojump
+alias jj='fasd_cd -d -i' # cd with interactive selection
 # }}}
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change. {{{
-export PATH="$PATH:$HOME/.rvm/bin"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
-eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)" alias ohmyzsh="mate ~/.oh-my-zsh"
-# }}}
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
