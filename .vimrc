@@ -39,7 +39,7 @@ set foldmethod=marker
 set foldnestmax=10
 set foldenable
 set foldlevel=0
-set so=10 " scroll off
+set so=1 " scroll off
 
 " Sets the line numbering to red background:
 " ======= Tap & Space ======== "
