@@ -48,6 +48,8 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# Replace fzf 'find' module to 'fd'
+export FZF_DEFAULT_COMMAND=’fd — type f’
 # }}}
 # alias {{{
 alias vi='nvim'
