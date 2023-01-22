@@ -164,9 +164,6 @@ Plug 'carlitux/deoplete-ternjs'
 Plug 'liuchengxu/vim-clap'
 
 " }}}
-" P4 {{{
-Plug 'milad14000/vim_p4'
-" }}}
 call plug#end()
 " }}}
 "Plugin Settings {{{
