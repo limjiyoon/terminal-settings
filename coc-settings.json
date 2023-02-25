@@ -1,0 +1,15 @@
+{
+  "codeLens.enable": false,
+  "diagnostic.errorSign": "✖",
+  "diagnostic.hintSign": "➤",
+  "diagnostic.infoSign": "ℹ",
+  "diagnostic.warningSign": "⚠",
+  "python.linting.pylintArgs": [
+    "--load-plugins",
+    "pylint_django"
+  ],
+  "python.linting.ruffEnabled": true,
+  "signature.enable": true,
+  "suggest.noselect": false,
+  "suggest.preferCompleteThanJumpPlaceholder": true
+}

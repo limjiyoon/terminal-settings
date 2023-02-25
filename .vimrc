@@ -151,21 +151,13 @@ Plug 'joshdick/onedark.vim'
 
 " for CSV
 Plug 'mechatroner/rainbow_csv'
-" AutoComplete
-Plug 'w0rp/ale' " Lint
 " Plug 'neomake/neomake' " Async Make
-Plug 'Shougo/deoplete.nvim'
-Plug 'zchee/deoplete-zsh'
 Plug 'Shougo/neco-vim'
-Plug 'zchee/deoplete-clang'
 Plug 'davidhalter/jedi-vim'
-Plug 'zchee/deoplete-jedi'
-Plug 'carlitux/deoplete-ternjs'
 Plug 'liuchengxu/vim-clap'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'github/copilot.vim'
 
-" }}}
-" P4 {{{
-Plug 'milad14000/vim_p4'
 " }}}
 call plug#end()
 " }}}
@@ -249,35 +241,10 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 let g:lengthmatters_on_by_default = 0 " no highlighting will be done when opening a new window
 nnoremap <Leader>lm <ESC>:LengthmattersToggle<CR>
 " }}}
-" - Ale {{{
-nmap <leader>a <ESC>:ALEToggle<CR>
-let g:airline#extensions#ale#enabled = 1 " Show warning in airlines
-
-" Navigate error quickly
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-
-let g:ale_lint_on_text_changed = 'never' " run linter when save file
-let g:ale_lint_on_enter = 0 " don't run linter on opening a file"
-let g:ale_sign_error = '✖' "Lint error sign
-let g:ale_sign_warning = '⚠' "Lint warning sign
-let g:ale_linters = {'javascript': ['eslint']} "Lint js with eslint
-" let g:ale_fixers = {'javascript': ['prettier', 'eslint']} "Fix eslint errors
-
-"   }}}
-" - Deoplete {{{
-let g:deoplete#enable_at_startup = 1
 " Python
 let g:jedi#completions_enabled = 0
 " let g:jedi#completins_command = "<C-n>"
 " let g:jedi#popup_on_dot = 0
-let g:deoplete#sources#jedi#enable_typeinfo = 0
-" let g:deoplete#sources#jedi#popup_on_dot = 0
-" Clang
-let g:deoplete#sources#clang#libclang_path = '/usr/local/Cellar/llvm/7.0.0_1/lib/libclang.dylib'
-let g:deoplete#sources#clang#clang_header = '/usr/local/Cellar/llvm/7.0.0_1/lib/clang'
-let g:deoplete#sources#clang#std = { "c": "c99", "c++": "c++11" }
-
 
 " }}}
 " - Theme : onedark {{{
