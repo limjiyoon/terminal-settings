@@ -296,3 +296,5 @@ bind C-a send-prefix
 # set shortkey for synchronize-pane
 bind e setw synchronize-panes
 set -sg escape-time 0
+set-option -g default-shell $SHELL
+set -g default-terminal "screen-256color"
