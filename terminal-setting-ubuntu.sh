@@ -68,6 +68,6 @@ sudo dpkg -i ripgrep_11.0.1_amd64.deb
 
 #procs
 #exa
-cat terminal-settings/.vimrc >> init.vim
+cat terminal-settings/.vimrc > init.vim
 mkdir -p ~/.config/nvim
 cp coc-settings.json ~/.config/nvim/coc-settings.json

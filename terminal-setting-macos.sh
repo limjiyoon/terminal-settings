@@ -48,4 +48,4 @@ brew install bat
 brew install procs
 brew install exa
 
-cat terminal-settings/.vimrc >> init.vim
+cat terminal-settings/.vimrc > init.vim
