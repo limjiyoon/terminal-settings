@@ -157,6 +157,7 @@ Plug 'davidhalter/jedi-vim'
 Plug 'liuchengxu/vim-clap'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'github/copilot.vim'
+Plug 'hynek/vim-python-pep8-indent'
 
 " }}}
 call plug#end()
