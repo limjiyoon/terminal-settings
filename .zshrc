@@ -53,6 +53,9 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# zoxide for jump to the folder
+eval "$(zoxide init zsh)"
+
 # Replace fzf 'find' module to 'fd'
 export FZF_DEFAULT_COMMAND='fd --type f'
 # }}}
@@ -62,6 +65,7 @@ alias vim='nvim'
 alias py='python'
 alias gcc='gcc -W -Wall -O2'
 alias ssh='ssh -c aes128-ctr'
-alias j='fasd_cd -d'     # cd, same functionality as j in autojump
-alias jj='fasd_cd -d -i' # cd with interactive selection
+alias ls='eza'
+alias ll='eza -al'
+alias l='eza -l'
 # }}}

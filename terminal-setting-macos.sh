@@ -46,6 +46,7 @@ brew install fd
 brew install ripgrep
 brew install bat
 brew install procs
-brew install exa
+brew install eza
+brew install glow
 
 cat terminal-settings/.vimrc > init.vim
