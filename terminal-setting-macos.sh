@@ -48,5 +48,6 @@ brew install bat
 brew install procs
 brew install eza
 brew install glow
+brew install git-delta
 
 cat terminal-settings/.vimrc > init.vim
